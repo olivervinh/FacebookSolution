@@ -38,7 +38,7 @@ namespace Facebook.Infrastructure.Data.Repositories
                 _context.Set<T>().Remove(entity);
         }
 
-        public IQueryable<T> List(Expression<Func<T, bool>> expression)
+        public IQueryable<T> Conditions(Expression<Func<T, bool>> expression)
         {
             return _context.Set<T>().Where(expression);
         }

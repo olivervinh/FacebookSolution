@@ -12,6 +12,6 @@ namespace Facebook.Domain.Base.Interfaces
         void Add(T entity);
         void Delete(T entity);
         void Update(T entity);
-        IQueryable<T> List(Expression<Func<T, bool>> expression);
+        IQueryable<T> Conditions(Expression<Func<T, bool>> expression);
     }
 }
