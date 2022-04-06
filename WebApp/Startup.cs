@@ -8,6 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Facebook.Application.Services;
+using Facebook.Application.Extensions;
+using Facebook.Infrastructure.Data;
 
 namespace WebApp
 {
@@ -24,6 +27,10 @@ namespace WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services
+            .AddDatabase(Configuration)
+            .AddRepositories()
+            .AddServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +59,7 @@ namespace WebApp
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            DataSeeding.Seed(app);
         }
     }
 }
